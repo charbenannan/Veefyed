@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-# Veefyed
 # Skin Analysis API
 
 A FastAPI-based backend service for image upload and mock skin analysis, designed for mobile integration.
@@ -155,17 +153,58 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 ## 🏃 Running the Application
 
-### Local Development
+### Using Virtual Environment (Recommended)
 
-```bash
-uvicorn app.main:app --reload
-```
+This is the **preferred method** for running the application locally.
 
-### Production
+1. **Ensure you're in the project directory**:
+   ```bash
+   cd veefyed
+   ```
+
+2. **Activate virtual environment**:
+   
+   **On Windows PowerShell:**
+   ```powershell
+   .\venv\Scripts\Activate.ps1
+   ```
+   
+   **On Windows CMD:**
+   ```cmd
+   venv\Scripts\activate.bat
+   ```
+   
+   **On macOS/Linux:**
+   ```bash
+   source venv/bin/activate
+   ```
+
+3. **Run the development server**:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+   
+   The API will be available at `http://localhost:8000`
+
+4. **Stop the server**:
+   Press `Ctrl+C` in the terminal
+
+5. **Deactivate virtual environment** (when done):
+   ```bash
+   deactivate
+   ```
+
+### Production Mode (Without Auto-reload)
+
+For production or testing without auto-reload:
 
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
+
+### Alternative: Using Docker
+
+If you prefer containerization, see the [Docker Deployment](#docker-deployment) section below.
 
 ## 📚 API Documentation
 
@@ -496,6 +535,3 @@ For questions or feedback, please contact [your-email@example.com]
 - Environment configuration: 30 min
 - Docker setup: 30 min
 - Documentation: 45 min
-=======
-# Veefyed
->>>>>>> b796d7fb91170e261e0c2e0c45e76a7c78d6bdf7
