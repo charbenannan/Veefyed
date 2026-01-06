@@ -39,7 +39,7 @@ A FastAPI-based backend service for image upload and mock skin analysis, designe
 ## 📁 Project Structure
 
 ```
-skin-analysis-api/
+veefyed/
 ├── app/
 │   ├── routes/
 │   │   ├── __init__.py
@@ -78,7 +78,7 @@ skin-analysis-api/
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd skin-analysis-api
+   cd veefyed-api
    ```
 
 2. **Create a virtual environment**:
@@ -330,10 +330,10 @@ Get API information.
 
 ```bash
 # Build the image
-docker build -t skin-analysis-api .
+docker build -t veefyed-api .
 
 # Run with environment file
-docker run --env-file .env -p 8000:8000 skin-analysis-api
+docker run --env-file .env -p 8000:8000 veefyed-api
 ```
 
 ### Using Docker Compose (Recommended)
