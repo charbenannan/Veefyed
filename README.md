@@ -32,7 +32,7 @@ A FastAPI-based backend service for image upload and mock skin analysis, designe
 
 - **Framework**: FastAPI 0.104.1
 - **Server**: Uvicorn 0.24.0
-- **Language**: Python 3.9+
+- **Language**: Python 3.12+ (recommended for best compatibility)
 - **File Handling**: python-multipart, Pillow
 - **Configuration**: python-dotenv
 
@@ -70,7 +70,9 @@ veefyed/
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- **Python 3.12 or higher** (recommended for compatibility)
+  - Python 3.14 may require additional setup due to limited package support
+  - Python 3.9-3.13 should also work
 - pip
 
 ### Steps
@@ -81,26 +83,54 @@ veefyed/
    cd veefyed-api
    ```
 
-2. **Create a virtual environment**:
+2. **Create a virtual environment with Python 3.12**:
+   
+   **Option 1: If you have Python 3.12 installed:**
    ```bash
    python -m venv venv
+   ```
    
-   # On Windows
+   **Option 2: If you have multiple Python versions (Windows):**
+   ```bash
+   py -3.12 -m venv venv
+   ```
+   
+   **Option 3: If Python 3.12 is not installed (Windows with py launcher):**
+   ```bash
+   # Install Python 3.12
+   py install 3.12
+   
+   # Create virtual environment
+   py -3.12 -m venv venv
+   ```
+
+3. **Activate the virtual environment**:
+   
+   **On Windows (Command Prompt):**
+   ```cmd
    venv\Scripts\activate
+   ```
    
-   # On macOS/Linux
+   **On Windows (PowerShell):**
+   ```powershell
+   .\venv\Scripts\Activate.ps1
+   ```
+   
+   **On macOS/Linux:**
+   ```bash
    source venv/bin/activate
    ```
 
-3. **Install dependencies**:
+4. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
+   
+   **Note**: If you encounter issues with `pydantic-core` requiring Rust, ensure you're using Python 3.12. Python 3.14 support for some packages is limited.
 
-4. **Set up environment variables**:
+5. **Set up environment variables**:
    ```bash
-   cp .env.example .env (Powershell)
-   copy .env.example .env (CMD)
+   cp .env.example .env
    ```
    
    Edit `.env` and set your API key:
@@ -108,12 +138,36 @@ veefyed/
    API_KEY=your-secret-api-key-here
    ```
 
-5. **Run the application**:
+6. **Run the application**:
    ```bash
    uvicorn app.main:app --reload
    ```
 
 The API will be available at `http://localhost:8000`
+
+### Troubleshooting Installation
+
+**Issue: `pydantic-core` requires Rust to compile**
+
+This typically happens with Python 3.14 or newer versions where pre-built wheels aren't available yet.
+
+**Solution**: Use Python 3.12 (recommended):
+```bash
+# Remove existing virtual environment
+deactivate  # if currently activated
+rmdir /s venv  # Windows
+# or
+rm -rf venv  # macOS/Linux
+
+# Create new environment with Python 3.12
+py -3.12 -m venv venv  # Windows
+# or
+python3.12 -m venv venv  # macOS/Linux
+
+# Activate and install
+venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+```
 
 ## 🔐 Environment Configuration
 
@@ -221,7 +275,7 @@ Once running, access the interactive API documentation:
 All endpoints (except `/docs` and `/redoc`) require an API key in the header:
 
 ```
-X-API-Key: your-api-key-here
+X-API-Key: dev-api-key-12345
 ```
 
 ### 1. Upload Image
@@ -232,7 +286,7 @@ Upload an image for analysis.
 
 **Headers:**
 ```
-X-API-Key: your-api-key-here
+X-API-Key: dev-api-key-12345
 Content-Type: multipart/form-data
 ```
 
@@ -263,7 +317,7 @@ Analyze a previously uploaded image.
 
 **Headers:**
 ```
-X-API-Key: your-api-key-here
+X-API-Key: dev-api-key-12345
 Content-Type: application/json
 ```
 
@@ -400,7 +454,7 @@ print(response.json())
 ### Using Swagger UI
 
 1. Visit http://localhost:8000/docs
-2. Click "Authorize" and enter your API key
+2. Click "Authorize" and enter your API key(dev-api-key-12345)
 3. Test endpoints directly in the browser
 
 ## 🏗 Design Decisions
@@ -512,6 +566,7 @@ If this were a production system, I would implement the following:
 - **Simple API key auth** is acceptable for this technical task
 - **In-memory storage** for metadata is temporary
 - **Single-instance deployment** for development
+- **Python 3.12** is used for optimal package compatibility
 
 ## 📄 License
 
