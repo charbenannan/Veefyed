@@ -518,11 +518,11 @@ MIT License
 
 ## 👤 Author
 
-[Your Name]
+Charles Bentum-Annan
 
 ## 📧 Contact
 
-For questions or feedback, please contact [your-email@example.com]
+For questions or feedback, please contact annancharles772@gmail.com
 
 ---
 
