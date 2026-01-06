@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Veefyed
 # Skin Analysis API
 
@@ -495,3 +496,6 @@ For questions or feedback, please contact [your-email@example.com]
 - Environment configuration: 30 min
 - Docker setup: 30 min
 - Documentation: 45 min
+=======
+# Veefyed
+>>>>>>> b796d7fb91170e261e0c2e0c45e76a7c78d6bdf7
