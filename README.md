@@ -99,7 +99,8 @@ veefyed/
 
 4. **Set up environment variables**:
    ```bash
-   cp .env.example .env
+   cp .env.example .env (Powershell)'
+   copy .env.example .env (CMD)
    ```
    
    Edit `.env` and set your API key:
